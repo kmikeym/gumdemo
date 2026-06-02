@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>gumdemo — coming soon</title>
+<meta name="description" content="$350 of gum. All of it. A KmikeyM shareholder-mandated project, coming soon." />
+
+<!-- Open Graph / link preview -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="gumdemo — coming soon" />
+<meta property="og:description" content="$350 of gum. All of it." />
+<meta property="og:url" content="https://gumdemo.com" />
+<meta property="og:image" content="https://gumdemo.com/assets/coming-soon.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- 🍬 favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍬</text></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,700;0,800;1,800;1,900&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --green:    #147B3C;
+    --green-2:  #0C5328;
+    --green-3:  #1C9A4C;
+    --bright:   #46CF6B;
+    --mint:     #CFF7DC;
+    --melon:    #FF5E7E;
+    --ink:      #0B3C1E;
+    --body:     #1C3B28;
+    --white:    #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { min-height: 100%; }
+
+  body {
+    font-family: "Hanken Grotesk", system-ui, sans-serif;
+    color: var(--white);
+    background:
+      radial-gradient(120% 80% at 50% -8%, var(--green-3) 0%, var(--green) 40%, var(--green-2) 100%);
+    background-attachment: fixed;
+    display: flex; flex-direction: column; align-items: center;
+    min-height: 100vh;
+    padding: 7vh 22px 0;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* soft "fresh" light orbs */
+  .orb {
+    position: fixed; border-radius: 50%; z-index: 0;
+    filter: blur(60px); opacity: .5; pointer-events: none;
+    animation: drift 14s ease-in-out infinite;
+  }
+  .o1 { width: 360px; height: 360px; background: var(--bright); top: -90px; left: -80px; }
+  .o2 { width: 300px; height: 300px; background: #0fae50;   bottom: -80px; right: -70px; animation-delay: -7s; }
+  .o3 { width: 180px; height: 180px; background: var(--melon); top: 48%; left: 6%; opacity: .2; animation-delay: -4s; }
+  @keyframes drift { 0%,100% { transform: translate(0,0); } 50% { transform: translate(20px,-26px); } }
+
+  main {
+    position: relative; z-index: 1;
+    width: min(680px, 100%);
+    text-align: center;
+  }
+
+  .kicker {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: .26em; text-transform: uppercase;
+    color: var(--white);
+    background: rgba(255,255,255,.10);
+    border: 1.5px solid rgba(255,255,255,.45);
+    border-radius: 999px; padding: 8px 17px;
+    backdrop-filter: blur(4px);
+    opacity: 0; animation: rise .7s .05s both;
+  }
+  .kicker .blip {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--bright); box-shadow: 0 0 0 0 var(--bright);
+    animation: pulse 1.8s infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(70,207,107,.6); }
+    70%  { box-shadow: 0 0 0 11px rgba(70,207,107,0); }
+    100% { box-shadow: 0 0 0 0 rgba(70,207,107,0); }
+  }
+
+  h1 {
+    font-style: italic; font-weight: 900;
+    font-size: clamp(62px, 15vw, 124px);
+    line-height: .94; letter-spacing: -.02em;
+    margin: 20px 0 4px; color: var(--white);
+    text-shadow: 0 6px 26px rgba(0,0,0,.28);
+    opacity: 0; animation: pop .7s .18s both;
+  }
+
+  /* white product card framing the hero image */
+  .card {
+    position: relative; margin: 26px auto 0; width: 100%;
+    background: var(--white); border-radius: 26px;
+    box-shadow: 0 26px 50px -16px rgba(0,0,0,.45);
+    padding: 16px; opacity: 0; animation: rise .7s .32s both;
+  }
+  .card img { display: block; width: 100%; height: auto; border-radius: 16px; }
+  .placeholder {
+    display: grid; place-items: center; aspect-ratio: 16 / 10; border-radius: 16px;
+    border: 2px dashed var(--bright);
+    background: repeating-linear-gradient(45deg, #F2FDF5 0 16px, #E4F8EA 16px 32px);
+    color: #2c8a4b; font-weight: 700; font-size: 12px;
+    letter-spacing: .14em; text-transform: uppercase; text-align: center; padding: 24px;
+  }
+  .placeholder[hidden] { display: none; }
+  .tab {
+    position: absolute; top: 22px; right: -10px;
+    background: var(--melon); color: var(--white);
+    font-weight: 800; font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+    padding: 9px 16px; border-radius: 999px 4px 4px 999px;
+    box-shadow: 0 8px 18px -6px rgba(0,0,0,.4); z-index: 3;
+  }
+
+  .tagline {
+    font-size: clamp(18px, 4.2vw, 24px); font-weight: 500;
+    margin-top: 26px; color: rgba(255,255,255,.92);
+    opacity: 0; animation: rise .7s .46s both;
+  }
+  .tagline b { color: var(--mint); font-weight: 800; }
+
+  /* ── FAQ ── */
+  .faq {
+    position: relative; z-index: 1;
+    width: min(680px, 100%); margin: 64px auto 0; text-align: left;
+    opacity: 0; animation: rise .7s .6s both;
+  }
+  .faq h2 {
+    font-style: italic; font-weight: 900;
+    font-size: clamp(26px, 6.5vw, 38px);
+    text-align: center; color: var(--white); letter-spacing: -.01em;
+  }
+  .faq .faq-sub {
+    text-align: center; color: rgba(255,255,255,.62);
+    font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
+    margin: 7px 0 24px;
+  }
+
+  .qa {
+    background: var(--white); border-radius: 18px; margin-bottom: 14px;
+    box-shadow: 0 16px 34px -20px rgba(0,0,0,.45); overflow: hidden;
+  }
+  .qa summary {
+    cursor: pointer; list-style: none;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 19px 22px; font-weight: 800; line-height: 1.25;
+    font-size: clamp(17px, 4vw, 20px); color: var(--ink);
+  }
+  .qa summary::-webkit-details-marker { display: none; }
+  .qa summary:hover { color: #178a43; }
+  .plus {
+    flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%;
+    background: var(--mint); display: grid; place-items: center;
+    transition: background .18s ease, transform .25s ease;
+  }
+  .plus::before { content: "+"; color: #178a43; font-weight: 800; font-size: 21px; line-height: 1; }
+  .qa[open] .plus { background: var(--bright); transform: rotate(180deg); }
+  .qa[open] .plus::before { content: "–"; color: #fff; }
+  .qa summary:hover .plus { background: var(--bright); }
+  .qa summary:hover .plus::before { color: #fff; }
+
+  .a { padding: 0 22px 22px; color: var(--body); font-size: 15.5px; line-height: 1.62; }
+  .a p { margin: 0 0 12px; }
+  .a p:last-child { margin-bottom: 0; }
+  .a .lead { font-weight: 700; color: var(--ink); }
+  .a ul { list-style: none; margin: 0 0 14px; padding: 0; }
+  .a li { position: relative; padding-left: 22px; margin-bottom: 9px; }
+  .a li:last-child { margin-bottom: 0; }
+  .a li::before {
+    content: ""; position: absolute; left: 3px; top: 9px;
+    width: 8px; height: 8px; border-radius: 50%; background: var(--bright);
+  }
+  .a b { color: var(--ink); }
+  .meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 2px 0 15px; }
+  .date {
+    background: #EAF7EE; color: #2c8a4b; font-weight: 700;
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    padding: 4px 11px; border-radius: 999px;
+  }
+  .note { font-style: italic; font-size: 12.5px; color: #7d9a86; }
+
+  /* tiny provenance strip at the true bottom */
+  .colophon {
+    position: relative; z-index: 1;
+    margin: 52px auto 30px; text-align: center;
+    font-size: 11px; letter-spacing: .05em; color: rgba(255,255,255,.5);
+    opacity: 0; animation: rise .7s .72s both;
+  }
+  .colophon a { color: inherit; text-decoration: none; transition: color .18s ease; }
+  .colophon a:hover { color: var(--white); text-decoration: underline; }
+  .colophon .sep { opacity: .5; margin: 0 8px; }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  @keyframes pop  { 0% { opacity: 0; transform: translateY(16px) scale(.92); }
+                    70%{ opacity: 1; transform: translateY(0)    scale(1.03); }
+                    100%{ opacity: 1; transform: scale(1); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after { animation: none !important; }
+    .kicker, h1, .card, .tagline, .faq, .colophon { opacity: 1 !important; }
+    .plus { transition: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="orb o3"></div>
+
+  <main>
+    <span class="kicker"><span class="blip"></span> Coming Soon</span>
+
+    <h1>gumdemo</h1>
+
+    <div class="card">
+      <div class="tab">Coming Soon</div>
+      <!-- Drop the generated art at assets/coming-soon.png and it appears here. -->
+      <img src="assets/coming-soon.png" alt="gumdemo — coming soon"
+           onerror="this.style.display='none'; this.nextElementSibling.hidden=false;" />
+      <div class="placeholder" hidden>hero image goes here<br />assets/coming-soon.png</div>
+    </div>
+
+    <p class="tagline"><b>$350 of gum.</b> All of it.</p>
+  </main>
+
+  <section class="faq">
+    <h2>Frequently Chewed Questions</h2>
+    <p class="faq-sub">Everything we learned before spending the money</p>
+
+    <details class="qa">
+      <summary><span>What is gum?</span><span class="plus" aria-hidden="true"></span></summary>
+      <div class="a">
+        <div class="meta"><span class="date">Jun 1</span></div>
+        <p>Gum (the chewable kind) is a soft, rubbery confection you chew without swallowing. It's made from a base of elastic material plus sweeteners and flavorings.</p>
+        <p class="lead">The basic components:</p>
+        <ul>
+          <li><b>Gum base</b> — the chewy, insoluble part that gives it texture. Historically this came from chicle (a latex from the sapodilla tree), but most modern gum uses synthetic rubbers like polyisobutylene and other food-grade polymers, combined with waxes and softeners.</li>
+          <li><b>Sweeteners</b> — either sugar (sucrose, corn syrup) or sugar substitutes like xylitol, sorbitol, or aspartame in sugar-free versions.</li>
+          <li><b>Flavorings</b> — mint, fruit, cinnamon, etc., which leach out as you chew, which is why the flavor fades but the gum itself doesn't dissolve.</li>
+          <li><b>Softeners and humectants</b> — glycerin or vegetable oils that keep it pliable.</li>
+        </ul>
+        <p>People chew it for flavor, fresh breath, to pass time, or out of habit. Sugar-free gum (especially with xylitol) is sometimes recommended by dentists because chewing increases saliva flow, which helps neutralize mouth acid.</p>
+        <p>The reason you don't swallow it: the gum base isn't digestible, so it passes through largely intact. The old warning that swallowed gum "stays in your stomach for seven years" is a myth, though.</p>
+      </div>
+    </details>
+
+    <details class="qa">
+      <summary><span>Where did gum come from?</span><span class="plus" aria-hidden="true"></span></summary>
+      <div class="a">
+        <div class="meta">
+          <span class="date">Jun 1</span>
+          <span class="note">Retrieved historical knowledge to address gum's origins</span>
+        </div>
+        <p>Chewing gum has a long history across multiple cultures, with people chewing tree resins and saps for thousands of years before the modern product existed.</p>
+        <p class="lead">Ancient origins:</p>
+        <ul>
+          <li>The oldest known chewed gum is a piece of birch bark tar from Finland, around 5,000–6,000 years old, with human tooth marks in it. Neolithic people across northern Europe chewed birch tar, possibly as an antiseptic, an adhesive, or just for pleasure.</li>
+          <li>The ancient Greeks chewed mastic, a resin from the mastic tree, to clean teeth and freshen breath. The word "masticate" traces back to this.</li>
+          <li>The Maya and Aztecs chewed chicle, the latex sap of the sapodilla tree, long before Europeans arrived. The Aztecs had social rules about it, women and children could chew openly, but adults did so privately.</li>
+        </ul>
+        <p class="lead">The modern product:</p>
+        <p>The chewing gum industry really began in 19th-century North America. Early commercial versions used spruce tree resin and later paraffin wax. The pivotal moment came in the 1860s when the exiled Mexican general Antonio López de Santa Anna brought a supply of chicle to the United States, hoping to sell it as a rubber substitute. That venture failed, but an American named Thomas Adams, who was working with the chicle, instead tried it as a chewing gum. It chewed far better than the wax and resin products of the time, and Adams began selling it commercially.</p>
+        <p>From there the industry grew quickly. William Wrigley Jr. built a major business in the 1890s with aggressive marketing and brands like Juicy Fruit and Spearmint. Through the 20th century, manufacturers gradually replaced natural chicle with synthetic rubber bases, which were cheaper and more consistent, producing the gum sold today.</p>
+      </div>
+    </details>
+
+    <details class="qa">
+      <summary><span>Synthetic rubber?</span><span class="plus" aria-hidden="true"></span></summary>
+      <div class="a">
+        <div class="meta">
+          <span class="date">Jun 1</span>
+          <span class="note">Identified factual chemistry question, retrieved established knowledge</span>
+        </div>
+        <p>Yes. Most commercial gum today uses a base built from synthetic polymers rather than natural chicle. The "gum base" is the part that stays in your mouth, the insoluble chewy matrix that everything else (sweeteners, flavors) is mixed into.</p>
+        <p class="lead">The main synthetic components:</p>
+        <ul>
+          <li><b>Polyisobutylene</b> — a synthetic rubber, the same general class of polymer used in things like inner tubes and sealants. It provides the core elasticity and chew.</li>
+          <li><b>Butyl rubber (isobutylene-isoprene copolymer)</b> — another elastomer that adds stretch and helps hold the gum together.</li>
+          <li><b>Polyvinyl acetate (PVA)</b> — a polymer (also found in white glue and some food coatings) that adds firmness and helps bind flavors. Sometimes called "gum base resin."</li>
+          <li><b>Styrene-butadiene rubber</b> — used in some formulations for texture.</li>
+        </ul>
+        <p class="lead">Around those elastomers, the base also includes:</p>
+        <ul>
+          <li>Waxes (paraffin, microcrystalline) and softeners/plasticizers to control how soft and pliable it is.</li>
+          <li>Fillers like talc or calcium carbonate to give body.</li>
+          <li>Emulsifiers such as glycerin or lecithin to keep everything blended and prevent stickiness.</li>
+        </ul>
+        <p>These are all food-grade versions, regulated as food additives. Manufacturers switched to them through the 20th century because chicle supply was unreliable and expensive, and synthetic bases are cheaper, more consistent in texture, and have a longer shelf life.</p>
+        <p>One practical consequence: because the base is essentially a soft plastic-and-rubber blend, discarded gum doesn't biodegrade easily, which is why it's such a persistent litter problem on sidewalks. Some newer brands market biodegradable gum made from chicle or other natural polymers in response to this.</p>
+      </div>
+    </details>
+
+    <details class="qa">
+      <summary><span>This seems like a bad idea...</span><span class="plus" aria-hidden="true"></span></summary>
+      <div class="a">
+        <div class="meta"><span class="date">Jun 1</span></div>
+        <p>It's a reasonable reaction, but "synthetic rubber and plastic" sounds worse than the actual risk picture.</p>
+        <p class="lead">A few things that take the edge off:</p>
+        <ul>
+          <li><b>You don't digest or absorb the base.</b> The polymers are inert and insoluble. They don't break down in your mouth or gut, they pass through unchanged. The flavor and sweetener leach out; the base itself is along for the ride and comes out the other end.</li>
+          <li><b>"Food-grade" is a real distinction.</b> Polyvinyl acetate in glue and PVA in gum are the same family but manufactured to different purity standards. Regulators (FDA, EFSA) treat the gum-base components as approved food additives, meaning they've been assessed for the small exposures involved in chewing.</li>
+          <li><b>The dose is tiny.</b> You're not ingesting meaningful quantities of the polymer. Whatever trace exposure exists is low.</li>
+        </ul>
+        <p class="lead">That said, your instinct isn't baseless:</p>
+        <ul>
+          <li>The safety data is thinner than ideal. "Generally recognized as safe" often rests on the assumption of low exposure and the inertness of the material, not on extensive long-term studies of chewing specifically.</li>
+          <li>Sugar or sugar-alcohol content is a more concrete concern than the base. Sugared gum is bad for teeth; large amounts of sugar alcohols (sorbitol, xylitol) can cause digestive upset.</li>
+          <li>Some people simply prefer to avoid synthetic ingredients, which is a values choice rather than a clear safety verdict.</li>
+        </ul>
+        <p>If the synthetic base bothers you, chicle-based gums exist (brands like Simply Gum, Glee Gum, others) that use the natural tree resin instead. Same basic function, plant-derived base, and they biodegrade. They tend to cost more and have a softer, shorter-lived chew.</p>
+        <p>The honest summary: it's not the clean natural product the marketing implies, but the actual health risk from the base is low. The more legitimate reasons to be picky are sweetener type and personal preference about synthetic ingredients.</p>
+      </div>
+    </details>
+  </section>
+
+  <footer class="colophon">
+    <a href="https://vote.kmikeym.com/k5m/questions/182" target="_blank" rel="noopener">born from vote 182</a>
+    <span class="sep">·</span>
+    <a href="https://kmikeym.com" target="_blank" rel="noopener">a KmikeyM project</a>
+    <span class="sep">·</span>
+    <a href="https://x.com/kmikeym" target="_blank" rel="noopener">@kmikeym</a>
+  </footer>
+</body>
+</html>
