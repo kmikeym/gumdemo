@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Engineered for Repeat Purchase — KmikeyM Research</title>
+<meta name="description" content="Industry Brief No. 2: how gum was engineered for repeat purchase — high depletion velocity, trigger-bound habit, near-zero decision cost — and why that same design made it fragile." />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Engineered for Repeat Purchase — KmikeyM Research" />
+<meta property="og:description" content="The repeat-purchase machine behind gum, and the fragility baked into it." />
+<meta property="og:url" content="https://gumdemo.com/big-gum-2.html" />
+<meta property="og:image" content="https://gumdemo.com/assets/coming-soon.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍬</text></svg>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500;1,9..144,900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Hanken+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --paper:    #FAF6EC;
+    --paper-2:  #F2ECDD;
+    --ink:      #1A1813;
+    --ink-soft: #4A4636;
+    --rule:     #D8CEB8;
+    --green:    #147B3C;
+    --green-d:  #0C5328;
+    --gold:     #A67C2E;
+    --red:      #B23A2E;
+    --grow:     #1E8E4E;
+    --label:    "Hanken Grotesk", system-ui, sans-serif;
+    --serif:    "Newsreader", Georgia, serif;
+    --display:  "Fraunces", Georgia, serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--serif); color: var(--ink); background: var(--paper);
+    background-image: radial-gradient(rgba(120,100,60,.045) 1px, transparent 1.4px);
+    background-size: 4px 4px; line-height: 1.62; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { width: min(1080px, 100% - 40px); margin: 0 auto; }
+  .col  { max-width: 680px; }
+
+  .topbar { border-bottom: 2px solid var(--ink); background: var(--paper); position: sticky; top: 0; z-index: 20; }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 13px 0; }
+  .brandmark { font-family: var(--label); font-weight: 800; font-size: 15px; letter-spacing: -.01em; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 9px; }
+  .brandmark .blob { width: 13px; height: 13px; border-radius: 50%; background: var(--green); box-shadow: inset -2px -2px 0 rgba(0,0,0,.15); }
+  .brandmark b { color: var(--green); }
+  .topbar .filing { font-family: var(--label); font-weight: 600; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); }
+  .topbar .back { font-family: var(--label); font-weight: 700; font-size: 12.5px; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--green); padding-bottom: 2px; }
+  .topbar .back:hover { color: var(--green); }
+
+  .cover { padding: 64px 0 30px; border-bottom: 1px solid var(--rule); }
+  .eyebrow { font-family: var(--label); font-weight: 700; font-size: 12px; letter-spacing: .26em; text-transform: uppercase; color: var(--green); display: inline-flex; align-items: center; gap: 12px; }
+  .eyebrow::after { content: ""; width: 44px; height: 2px; background: var(--gold); display: inline-block; }
+  .cover h1 { font-family: var(--display); font-weight: 900; font-optical-sizing: auto; font-size: clamp(40px, 8vw, 82px); line-height: .98; letter-spacing: -.02em; margin: 20px 0 0; max-width: 15ch; }
+  .cover h1 em { font-style: italic; color: var(--green); }
+  .cover .deck { font-family: var(--serif); font-style: italic; font-size: clamp(18px, 2.6vw, 23px); color: var(--ink-soft); max-width: 58ch; margin-top: 22px; line-height: 1.5; }
+  .byline { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: center; font-family: var(--label); font-size: 12px; letter-spacing: .06em; color: var(--ink-soft); }
+  .byline .stamp { border: 1.5px solid var(--red); color: var(--red); border-radius: 4px; padding: 4px 9px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; transform: rotate(-2deg); font-size: 10.5px; }
+  .byline b { color: var(--ink); }
+
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); border: 2px solid var(--ink); margin: 40px 0 8px; background: var(--paper-2); }
+  .kpi { padding: 22px 20px; border-right: 1px solid var(--rule); }
+  .kpi:last-child { border-right: none; }
+  .kpi .n { font-family: var(--display); font-weight: 900; font-size: clamp(22px, 3.4vw, 34px); line-height: 1; color: var(--green-d); letter-spacing: -.02em; }
+  .kpi .n.down { color: var(--red); }
+  .kpi .l { font-family: var(--label); font-size: 11.5px; font-weight: 600; letter-spacing: .04em; color: var(--ink-soft); margin-top: 9px; line-height: 1.35; text-transform: uppercase; }
+  @media (max-width: 720px) { .kpis { grid-template-columns: repeat(2, 1fr); } .kpi:nth-child(2){border-right:none} .kpi:nth-child(1),.kpi:nth-child(2){border-bottom:1px solid var(--rule)} }
+
+  section.body { padding: 46px 0 8px; }
+  .sec-no { font-family: var(--label); font-weight: 800; font-size: 12px; letter-spacing: .2em; color: var(--gold); }
+  h2 { font-family: var(--display); font-weight: 900; font-size: clamp(28px, 4.4vw, 44px); line-height: 1.04; letter-spacing: -.02em; margin: 8px 0 18px; max-width: 18ch; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 21px; margin: 26px 0 6px; color: var(--green-d); }
+  .prose p { font-size: 18px; margin: 0 0 16px; max-width: 68ch; }
+  .prose p .small { font-size: 15px; color: var(--ink-soft); }
+  .lede::first-letter { font-family: var(--display); font-weight: 900; float: left; font-size: 76px; line-height: .72; padding: 8px 12px 0 0; color: var(--green); }
+
+  .inset { background: var(--paper-2); border: 1px solid var(--rule); border-left: 4px solid var(--green); padding: 20px 22px; margin: 26px 0; border-radius: 0 8px 8px 0; max-width: 68ch; }
+  .inset .tag { font-family: var(--label); font-weight: 800; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--green-d); display: block; margin-bottom: 8px; }
+  .inset p { font-size: 16px; margin: 0 0 10px; }
+  .inset p:last-child { margin-bottom: 0; }
+  .inset ul { margin: 4px 0 0; padding-left: 18px; font-size: 16px; }
+  .inset li { margin-bottom: 5px; }
+  .inset.gold { border-left-color: var(--gold); }
+  .inset.gold .tag { color: var(--gold); }
+
+  .pullquote { font-family: var(--display); font-style: italic; font-weight: 500; font-size: clamp(24px, 3.6vw, 34px); line-height: 1.18; color: var(--green-d); margin: 38px 0; padding-left: 24px; border-left: 4px solid var(--gold); max-width: 26ch; }
+
+  /* emphasis callout band */
+  .callout { margin: 32px 0; padding: 24px 28px; border-radius: 12px; background: linear-gradient(180deg,#EAF6EE,#DFF0E5); border: 1px solid #BFE0CB; border-left: 5px solid var(--green); }
+  .callout .tag { font-family: var(--label); font-weight: 800; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--green-d); display: block; margin-bottom: 8px; }
+  .callout p { font-family: var(--display); font-style: italic; font-weight: 500; font-size: clamp(20px, 3vw, 27px); line-height: 1.24; color: #143a24; max-width: 36ch; margin: 0; }
+
+  /* habit-loop diagram */
+  figure { margin: 30px 0; border: 1px solid var(--rule); background: #fff; border-radius: 10px; overflow: hidden; }
+  figure .fig-head { padding: 16px 20px 4px; }
+  figure .fig-kicker { font-family: var(--label); font-weight: 800; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
+  figure .fig-title { font-family: var(--display); font-weight: 600; font-size: 19px; margin-top: 4px; }
+  figure .fig-body { padding: 14px 20px 16px; }
+  figcaption { font-family: var(--label); font-size: 11.5px; color: var(--ink-soft); padding: 0 20px 16px; border-top: 1px dotted var(--rule); padding-top: 10px; }
+  figcaption b { color: var(--ink); }
+
+  .loop { display: flex; align-items: stretch; gap: 10px; flex-wrap: wrap; }
+  .loop-node { flex: 1; min-width: 150px; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 10px; padding: 15px 16px; }
+  .loop-node .ln-k { font-family: var(--display); font-weight: 900; font-size: 19px; color: var(--green-d); display: block; }
+  .loop-node .ln-d { font-family: var(--serif); font-size: 14.5px; color: var(--ink-soft); margin-top: 3px; display: block; line-height: 1.4; }
+  .loop-arrow { align-self: center; font-family: var(--label); font-weight: 800; font-size: 22px; color: var(--gold); }
+  .loop-repeat { flex-basis: 100%; margin-top: 12px; padding: 10px 14px; text-align: center; font-family: var(--label); font-weight: 700; font-size: 13px; color: var(--green-d); background: #EAF6EE; border-radius: 8px; }
+
+  /* bars */
+  .bar { margin-bottom: 16px; }
+  .bar:last-child { margin-bottom: 0; }
+  .bar .blab { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--label); margin-bottom: 6px; }
+  .bar .blab .who { font-weight: 700; font-size: 14px; }
+  .bar .blab .val { font-family: var(--label); font-weight: 700; font-size: 12.5px; color: var(--ink-soft); }
+  .bar .track { height: 24px; background: var(--paper-2); border-radius: 4px; overflow: hidden; }
+  .bar .fill { height: 100%; border-radius: 4px; }
+
+  /* eroded-cues list */
+  .erosion { list-style: none; margin: 6px 0 0; padding: 0; }
+  .erosion li { font-family: var(--serif); font-size: 16px; padding: 8px 0 8px 30px; position: relative; border-bottom: 1px dotted var(--rule); }
+  .erosion li:last-child { border-bottom: none; }
+  .erosion li::before { content: "✕"; position: absolute; left: 4px; top: 8px; color: var(--red); font-family: var(--label); font-weight: 800; }
+  .erosion b { font-family: var(--label); font-weight: 800; }
+
+  /* analyst note */
+  .analyst { border: 2px solid var(--ink); background: var(--ink); color: var(--paper); border-radius: 12px; padding: 26px; margin: 40px 0; }
+  .analyst .tag { font-family: var(--label); font-weight: 800; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+  .analyst p { font-family: var(--serif); font-size: 18px; margin: 12px 0 0; max-width: 64ch; }
+  .analyst em { color: #fff; font-style: italic; }
+  .analyst a { color: #6FE0A0; text-decoration: none; font-weight: 600; }
+
+  /* closing principle */
+  .principle { border: 2px solid var(--gold); background: #FBF3E2; border-radius: 12px; padding: 28px; margin: 36px 0; }
+  .principle .tag { font-family: var(--label); font-weight: 800; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); display: block; }
+  .principle p { font-family: var(--display); font-style: italic; font-weight: 500; font-size: clamp(19px, 2.7vw, 25px); line-height: 1.32; color: #5A4314; margin: 12px 0 0; max-width: 50ch; }
+
+  /* sources */
+  .sources { border-top: 2px solid var(--ink); margin-top: 50px; padding: 26px 0 0; }
+  .sources h2 { font-size: 22px; }
+  .sources ol { font-family: var(--label); font-size: 13px; color: var(--ink-soft); padding-left: 18px; max-width: 70ch; }
+  .sources li { margin-bottom: 8px; }
+  .sources b { color: var(--ink); }
+
+  .docfoot { border-top: 1px solid var(--rule); margin-top: 40px; padding: 28px 0 56px; font-family: var(--label); font-size: 12px; color: var(--ink-soft); }
+  .docfoot a { color: var(--green-d); text-decoration: none; font-weight: 700; }
+  .docfoot a:hover { text-decoration: underline; }
+  .docfoot .disc { margin-top: 12px; font-size: 11px; max-width: 70ch; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <a class="brandmark" href="index.html"><span class="blob"></span>KmikeyM&nbsp;<b>Research</b></a>
+      <span class="filing">Industry Brief №&nbsp;002 · Behavioral Design</span>
+      <a class="back" href="index.html">← gumdemo</a>
+    </div>
+  </div>
+
+  <header class="cover">
+    <div class="wrap">
+      <span class="eyebrow">The Repeat-Purchase Machine</span>
+      <h1>Engineered for <em>Repeat Purchase</em></h1>
+      <p class="deck">The product and the brand around it are designed so that buying again is frequent, automatic, and barely a decision. Gum is close to a perfect case — and the same design that made it a cash machine for a century is exactly why it's fragile now.</p>
+      <div class="byline">
+        <span>Prepared by <b>KmikeyM Research</b></span>
+        <span>Consumer Behavior Desk</span>
+        <span class="stamp">For Shareholders</span>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi"><div class="n">~10 min</div><div class="l">Flavor life per piece</div></div>
+        <div class="kpi"><div class="n">Several / day</div><div class="l">Repeat occasions per user</div></div>
+        <div class="kpi"><div class="n">$0</div><div class="l">Cost of each reorder signal</div></div>
+        <div class="kpi"><div class="n down">≈ 0</div><div class="l">Loyalty moat underneath</div></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="body">
+    <div class="wrap col">
+      <div class="sec-no">01 — The thesis</div>
+      <h2>A near-perfect repeat-purchase product</h2>
+      <div class="prose">
+        <p class="lede">"Engineered for repeat purchase" means the product and the brand around it are designed so that buying again is frequent, automatic, and barely a decision. Gum is close to a perfect case, and Wrigley's real genius was recognizing and amplifying that. The mechanics break into a few layers.</p>
+
+        <h3>The core property: the product destroys itself fast</h3>
+        <p>A stick of gum is spent in minutes; the flavor is gone in ten or so. Unlike a durable good (buy once, use for years) or even a candy bar (one sitting, one discrete craving), gum gets consumed almost instantly — and then consumed again, multiple times a day.</p>
+      </div>
+
+      <div class="callout">
+        <span class="tag">The engine</span>
+        <p>High depletion velocity is the whole engine. The faster a unit disappears, the more often the buyer is back at the shelf.</p>
+      </div>
+
+      <figure>
+        <div class="fig-head">
+          <div class="fig-kicker">Exhibit A · Why gum out-earns its shelf neighbors</div>
+          <div class="fig-title">Repurchase velocity, by product type</div>
+        </div>
+        <div class="fig-body">
+          <div class="bar">
+            <div class="blab"><span class="who">Chewing gum</span><span class="val">multiple times a day</span></div>
+            <div class="track"><div class="fill" style="width:100%;background:linear-gradient(90deg,var(--green),var(--green-d))"></div></div>
+          </div>
+          <div class="bar">
+            <div class="blab"><span class="who">Candy bar</span><span class="val">occasional craving</span></div>
+            <div class="track"><div class="fill" style="width:20%;background:var(--gold)"></div></div>
+          </div>
+          <div class="bar">
+            <div class="blab"><span class="who">Durable good</span><span class="val">once every few years</span></div>
+            <div class="track"><div class="fill" style="width:4%;background:#9A8E6E"></div></div>
+          </div>
+        </div>
+        <figcaption>Illustrative. Repeat-purchase frequency, not sales volume. <b>Depletion velocity</b> is what turns a cheap product into a recurring one.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <div class="inset">
+          <span class="tag">A flaw that's really a feature</span>
+          <p>Some argue the short flavor life is a feature, not a defect: you finish a piece still wanting the sensation, so throughput goes up. Whether or not it was deliberate, it works in the seller's favor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="body">
+    <div class="wrap col">
+      <div class="sec-no">02 — Triggers</div>
+      <h2>Attachment to recurring triggers</h2>
+      <div class="prose">
+        <p>The thing that converts "fast consumption" into "reliable revenue" is binding the product to daily cues that repeat on their own: after meals, after coffee, after a cigarette, before a meeting, while driving, in a nervous moment. <b>Each cue is a built-in reorder signal the company doesn't have to pay for.</b></p>
+        <p>This is the habit loop — cue, routine, reward — where the reward is a flavor hit plus fresh breath plus oral fixation. Once chewing is keyed to those triggers, demand becomes non-deliberative.</p>
+      </div>
+
+      <figure>
+        <div class="fig-head">
+          <div class="fig-kicker">Exhibit B · The mechanism</div>
+          <div class="fig-title">The habit loop, applied to gum</div>
+        </div>
+        <div class="fig-body">
+          <div class="loop">
+            <div class="loop-node"><span class="ln-k">Cue</span><span class="ln-d">after a meal · coffee · a cigarette · a meeting · a nervous moment</span></div>
+            <div class="loop-arrow">→</div>
+            <div class="loop-node"><span class="ln-k">Routine</span><span class="ln-d">unwrap a piece and chew</span></div>
+            <div class="loop-arrow">→</div>
+            <div class="loop-node"><span class="ln-k">Reward</span><span class="ln-d">flavor hit · fresh breath · oral fixation</span></div>
+            <div class="loop-repeat">↻&nbsp;&nbsp;the reward strengthens the cue — and the cue is a reorder signal the seller never paid for</div>
+          </div>
+        </div>
+        <figcaption>Framework: the cue–routine–reward habit loop (Duhigg, <i>The Power of Habit</i>).</figcaption>
+      </figure>
+
+      <blockquote class="pullquote">The buyer isn't choosing gum each time. The situation is choosing it for them.</blockquote>
+    </div>
+  </section>
+
+  <section class="body">
+    <div class="wrap col">
+      <div class="sec-no">03 — Friction &amp; default</div>
+      <h2>Effortless to buy, automatic to recall</h2>
+      <div class="prose">
+        <h3>Near-zero decision cost</h3>
+        <p>Cheap enough to buy without thinking, placed at the checkout where the purchase is impulse rather than planned. For a habitual low-involvement product, the seller wins by removing friction, not by persuading. The repeat buy has to be effortless — and physical placement at the point of impulse does most of that work.</p>
+
+        <h3>Brand as the default mental shortcut</h3>
+        <p>In a low-involvement category, nobody researches gum. The winner is whatever brand is automatically top-of-mind and physically on the shelf. Wrigley's enormous ad spend wasn't about convincing you gum is good — it was about making "Wrigley" the reflexive answer, so the repeat purchase defaults to the same brand instead of getting re-evaluated.</p>
+
+        <div class="inset gold">
+          <span class="tag">Framework · How Brands Grow</span>
+          <p>Byron Sharp's formulation: growth in these categories comes from <b>mental availability</b> (easy to recall) plus <b>physical availability</b> (easy to find) — not from loyalty schemes or deep differentiation. Be the first brand the cue retrieves, and be within arm's reach when it does.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="body">
+    <div class="wrap col">
+      <div class="sec-no">04 — Coverage &amp; seeding</div>
+      <h2>Cover every occasion, then give the first chews away</h2>
+      <div class="prose">
+        <h3>A portfolio that covers occasions and prevents fatigue</h3>
+        <p>Wrigley ran Juicy Fruit, Spearmint, and Doublemint simultaneously — not as competitors but as coverage: different flavor preferences, different moods, different occasions. Variety lets the same buyer rotate without leaving the brand family, countering the flavor-fatigue that would otherwise cap consumption.</p>
+
+        <h3>Free sampling to seed the habit, then harvest it</h3>
+        <p>Wrigley's famous tactic was mass free distribution. The logic is the same as modern freemium or a loss leader — run a century early. Give the first chews away, let the trigger-based habit form, then collect on a lifetime of recurring purchases.</p>
+
+        <div class="inset">
+          <span class="tag">The 1893 growth hack</span>
+          <ul>
+            <li>Sticks mailed to <b>every address</b> in the phone directories.</li>
+            <li>Gum mailed to <b>newlyweds</b> off public marriage records.</li>
+            <li>Packs sent to <b>children on their birthdays</b>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout">
+        <span class="tag">The implicit math</span>
+        <p>Acquire once, harvest for years. Pay the acquisition cost a single time and recoup it across a lifetime of automatic reorders — lifetime value over purchase frequency, even if nobody phrased it that way in 1893.</p>
+      </div>
+
+      <div class="prose">
+        <h3>The act is mildly self-reinforcing</h3>
+        <p>Chewing occupies the mouth and hands and is faintly self-soothing — which is why it works as a smoking substitute. The behavior is its own low-grade reward, so it reinforces its own repetition independent of flavor.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="body">
+    <div class="wrap col">
+      <div class="sec-no">05 — The fragility</div>
+      <h2>The sharp point: when the cues went away</h2>
+      <div class="prose">
+        <p>This engine ran entirely on triggers and impulse placement. When the triggers eroded, the engine stalled.</p>
+      </div>
+
+      <figure>
+        <div class="fig-head">
+          <div class="fig-kicker">Exhibit C · One eroded cue at a time</div>
+          <div class="fig-title">What removed the reorder signals</div>
+        </div>
+        <div class="fig-body">
+          <ul class="erosion">
+            <li><b>Fewer smokers</b> — removed the after-a-cigarette cue entirely.</li>
+            <li><b>Phones</b> — filled the idle and nervous moments gum used to fill.</li>
+            <li><b>Masking &amp; remote work</b> — killed the fresh-breath-for-social-proximity occasion.</li>
+            <li><b>Self-checkout &amp; shelf optimization</b> — shrank the impulse displays at the register.</li>
+          </ul>
+        </div>
+        <figcaption>Each lost cue is a reorder signal that stopped firing. See the volume fallout in <b>Brief № 001</b>.</figcaption>
+      </figure>
+
+      <div class="analyst">
+        <span class="tag">Analyst's note · No moat, just routine</span>
+        <p>The repeat-purchase machine was never built on deep brand love; it was built on <em>habit and availability</em> — and habit-based demand collapses fast once the cues disappear. The same design that made gum a cash machine for a century is exactly why it's fragile now: there's almost no loyalty moat underneath it, just routine, and routine can be displaced. The volume decline is documented in <a href="big-gum.html">Brief № 001, "Some Thoughts on Big Gum."</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="body">
+    <div class="wrap col">
+      <div class="sec-no">06 — The takeaway</div>
+      <h2>The transferable principle</h2>
+      <div class="prose">
+        <p>Stripped of gum, the model is general — and so is the trap inside it.</p>
+      </div>
+
+      <div class="principle">
+        <span class="tag">Stripped of gum</span>
+        <p>The most durable consumer revenue comes from products consumed fast and bound to self-repeating daily cues, sold at a price low enough to bypass deliberation, under a brand recalled automatically at the point of purchase. The vulnerability baked into that same model: demand built on cues rather than commitment evaporates the moment the cues change.</p>
+      </div>
+
+      <div class="sources" id="sources">
+        <h2>Further reading</h2>
+        <ol>
+          <li><b>Byron Sharp</b>, <i>How Brands Grow</i> — mental availability + physical availability in low-involvement categories.</li>
+          <li><b>Charles Duhigg</b>, <i>The Power of Habit</i> — the cue → routine → reward loop.</li>
+          <li><b>Nir Eyal</b>, <i>Hooked</i> — triggers, variable reward, and habit-forming product design.</li>
+          <li><b>KmikeyM Research, Brief № 001</b> — "Some Thoughts on Big Gum," on the category's structural decline.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <footer class="docfoot">
+    <div class="wrap">
+      <div>A field report from the <a href="index.html">gumdemo</a> project · <a href="https://kmikeym.com">KmikeyM</a> · <a href="https://vote.kmikeym.com/k5m/questions/182">vote 182</a> · <a href="big-gum.html">Brief № 001</a></div>
+      <p class="disc">Prepared for shareholder entertainment as part of the gumdemo project. Analytical framing draws on public business-strategy literature; brand names are referenced editorially. Not investment advice — and definitely not gum-investment advice.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

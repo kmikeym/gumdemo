@@ -19,7 +19,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,700;0,800;1,800;1,900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,900;1,9..144,500&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,700;0,800;1,800;1,900&display=swap" rel="stylesheet" />
 
 <style>
   :root {
@@ -200,6 +200,44 @@
   .colophon a:hover { color: var(--white); text-decoration: underline; }
   .colophon .sep { opacity: .5; margin: 0 8px; }
 
+  /* ── "Big Gum" report teaser — deliberately corporate/official ── */
+  .bg-teaser { position: relative; z-index: 1; width: min(680px, 100%); margin: 60px auto 0; }
+  .bg-card {
+    display: block; text-decoration: none; color: #16261c;
+    background: #FAF6EC; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 20px 44px -22px rgba(0,0,0,.5);
+    border: 1px solid rgba(0,0,0,.12);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .bg-card:hover { transform: translateY(-3px); box-shadow: 0 28px 54px -22px rgba(0,0,0,.55); }
+  .bg-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    background: #0C5328; color: #fff; padding: 11px 20px;
+    font-family: "Hanken Grotesk", sans-serif; font-weight: 800;
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+  }
+  .bg-head .doc { color: #FFD23F; opacity: .9; letter-spacing: .16em; }
+  .bg-body { padding: 22px 24px 24px; }
+  .bg-body .eyebrow {
+    font-family: "Hanken Grotesk", sans-serif; font-weight: 700;
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: #A67C2E;
+  }
+  .bg-body h2 {
+    font-family: "Fraunces", Georgia, serif; font-weight: 900; font-style: normal;
+    font-size: clamp(27px, 6vw, 38px); line-height: 1.02; letter-spacing: -.02em;
+    color: #16261c; margin: 9px 0 0;
+  }
+  .bg-body h2 em { font-style: italic; color: #147B3C; }
+  .bg-body .blurb { font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 16.5px; color: #4A4636; margin: 12px 0 0; line-height: 1.45; }
+  .bg-cta {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 18px;
+    font-family: "Hanken Grotesk", sans-serif; font-weight: 800; font-size: 13.5px;
+    color: #0C5328; border-bottom: 2px solid #147B3C; padding-bottom: 2px;
+    transition: gap .2s ease;
+  }
+  .bg-card:hover .bg-cta { gap: 13px; }
+  .bg-card + .bg-card { margin-top: 16px; }
+
   @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
   @keyframes pop  { 0% { opacity: 0; transform: translateY(16px) scale(.92); }
                     70%{ opacity: 1; transform: translateY(0)    scale(1.03); }
@@ -337,6 +375,28 @@
         <p>If the residual uncertainty bothers you, the chicle option sidesteps it entirely, you're back to a tree resin humans have chewed for millennia. That's probably the cleaner move than trying to fully resolve whether the synthetic base is fine.</p>
       </div>
     </details>
+  </section>
+
+  <section class="bg-teaser">
+    <a class="bg-card" href="big-gum.html">
+      <div class="bg-head"><span>KmikeyM Research</span><span class="doc">Industry Brief № 001</span></div>
+      <div class="bg-body">
+        <span class="eyebrow">Confectionery &amp; Specialty Retail Desk</span>
+        <h2>Some Thoughts on <em>"Big Gum"</em></h2>
+        <p class="blurb">A field report on the commercial gum industry: a century of consolidation, two giants, and a category in quiet structural decline. Charts, logos, and one skeptical analyst's note.</p>
+        <span class="bg-cta">Read the report →</span>
+      </div>
+    </a>
+
+    <a class="bg-card" href="big-gum-2.html">
+      <div class="bg-head"><span>KmikeyM Research</span><span class="doc">Industry Brief № 002</span></div>
+      <div class="bg-body">
+        <span class="eyebrow">Consumer Behavior Desk</span>
+        <h2>Engineered for <em>Repeat Purchase</em></h2>
+        <p class="blurb">How gum was built to be bought again without a decision — depletion velocity, the habit loop, and sampling as freemium a century early — and the fragility baked into the same machine.</p>
+        <span class="bg-cta">Read the report →</span>
+      </div>
+    </a>
   </section>
 
   <footer class="colophon">
