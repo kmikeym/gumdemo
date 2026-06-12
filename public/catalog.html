@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>gumdemo · the catalog</title>
-<meta name="description" content="Every pack of the $350 gum haul, cataloged: brand, flavor, format, and the company behind it." />
+<title>GUMDEMO · specimen registry</title>
+<meta name="description" content="Specimen registry of the GUMDEMO acquisition program: every unit cataloged with brand, classification, flavor taxonomy, and manufacturer of record." />
 
 <!-- Open Graph / link preview -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="gumdemo · the catalog" />
-<meta property="og:description" content="$350 of gum, cataloged like a database. Because it is one." />
+<meta property="og:title" content="GUMDEMO · specimen registry" />
+<meta property="og:description" content="Document GD-182. $350 of gum, cataloged to specification." />
 <meta property="og:url" content="https://gumdemo.com/catalog" />
 <meta name="twitter:card" content="summary" />
 
@@ -18,234 +18,311 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,900;1,9..144,500&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,700;0,800;1,800;1,900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
   :root {
-    --green:    #147B3C;
-    --green-2:  #0C5328;
-    --green-3:  #1C9A4C;
-    --bright:   #46CF6B;
-    --mint:     #CFF7DC;
-    --melon:    #FF5E7E;
-    --ink:      #0B3C1E;
-    --body:     #1C3B28;
-    --white:    #FFFFFF;
+    --paper:     #F7F6F2;
+    --paper-2:   #EFEDE6;
+    --ink:       #14181A;
+    --ink-2:     #3C4448;
+    --faint:     #8A9094;
+    --rule:      #C9C7BE;
+    --rule-dark: #14181A;
+    --accent:    #0C5328;   /* the only survivor of the friendly site */
+    --accent-2:  #147B3C;
+    --alert:     #8C3A1D;
+    --hl:        #E6F0E6;
+    --stamp:     #A33B2A;
+    --mono: "IBM Plex Mono", "Courier New", monospace;
+    --sans: "IBM Plex Sans", system-ui, sans-serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { min-height: 100%; }
 
   body {
-    font-family: "Hanken Grotesk", system-ui, sans-serif;
-    color: var(--white);
-    background:
-      radial-gradient(120% 80% at 50% -8%, var(--green-3) 0%, var(--green) 40%, var(--green-2) 100%);
-    background-attachment: fixed;
-    display: flex; flex-direction: column; align-items: center;
-    min-height: 100vh;
-    padding: 5vh 22px 0;
-    overflow-x: hidden;
-    position: relative;
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.5;
+    /* faint engineering grid */
+    background-image:
+      linear-gradient(var(--paper-2) 1px, transparent 1px),
+      linear-gradient(90deg, var(--paper-2) 1px, transparent 1px);
+    background-size: 28px 28px;
   }
 
-  .orb {
-    position: fixed; border-radius: 50%; z-index: 0;
-    filter: blur(60px); opacity: .5; pointer-events: none;
-    animation: drift 14s ease-in-out infinite;
+  .sheet {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
   }
-  .o1 { width: 360px; height: 360px; background: var(--bright); top: -90px; left: -80px; }
-  .o2 { width: 300px; height: 300px; background: #0fae50; bottom: -80px; right: -70px; animation-delay: -7s; }
-  @keyframes drift { 0%,100% { transform: translate(0,0); } 50% { transform: translate(20px,-26px); } }
 
-  main { position: relative; z-index: 1; width: min(980px, 100%); text-align: center; }
+  a { color: var(--accent); }
 
-  .crumb {
-    display: inline-block; font-size: 12px; font-weight: 700;
-    letter-spacing: .22em; text-transform: uppercase;
-    color: rgba(255,255,255,.75); text-decoration: none;
-    border: 1.5px solid rgba(255,255,255,.4); border-radius: 999px;
-    padding: 7px 16px; transition: background .18s ease;
+  /* ── document header ── */
+  .dochead {
+    border-bottom: 3px double var(--rule-dark);
+    padding: 26px 0 14px;
+    display: flex; flex-wrap: wrap; gap: 16px;
+    align-items: flex-end; justify-content: space-between;
   }
-  .crumb:hover { background: rgba(255,255,255,.12); }
-
-  h1 {
-    font-style: italic; font-weight: 900;
-    font-size: clamp(46px, 10vw, 84px);
-    line-height: .94; letter-spacing: -.02em;
-    margin: 18px 0 8px; color: var(--white);
-    text-shadow: 0 6px 26px rgba(0,0,0,.28);
+  .dochead .org {
+    font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+    color: var(--ink-2); text-transform: uppercase;
   }
-  .sub { font-size: clamp(15px, 3.6vw, 19px); color: rgba(255,255,255,.88); }
-  .sub b { color: var(--mint); }
-
-  /* stat strip */
-  .stats {
-    display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
-    margin: 26px auto 0;
+  .dochead .org a { color: inherit; text-decoration: none; }
+  .dochead .org a:hover { color: var(--accent); text-decoration: underline; }
+  .dochead h1 {
+    font-family: var(--mono); font-weight: 600;
+    font-size: clamp(22px, 4.6vw, 34px);
+    letter-spacing: .06em; text-transform: uppercase;
+    line-height: 1.1; margin-top: 4px;
   }
-  .stat {
-    background: rgba(255,255,255,.10); border: 1.5px solid rgba(255,255,255,.35);
-    border-radius: 16px; padding: 12px 20px; backdrop-filter: blur(4px);
-    min-width: 108px;
+  .docmeta {
+    font-family: var(--mono); font-size: 11px; line-height: 1.7;
+    text-align: right; color: var(--ink-2); white-space: nowrap;
   }
-  .stat .n { font-family: "Fraunces", Georgia, serif; font-weight: 900; font-size: 30px; line-height: 1; }
-  .stat .l { font-size: 10.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.7); margin-top: 5px; }
+  .docmeta b { color: var(--ink); font-weight: 600; }
 
-  /* filters */
-  .filters { margin: 30px auto 0; text-align: left; }
-  .fgroup { margin-bottom: 12px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  /* classification strip */
+  .classline {
+    display: flex; flex-wrap: wrap; gap: 0;
+    border-bottom: 1px solid var(--rule-dark);
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .classline span {
+    padding: 6px 14px 5px; border-right: 1px solid var(--rule-dark);
+    color: var(--ink-2);
+  }
+  .classline span:first-child { padding-left: 2px; }
+  .classline b { color: var(--ink); font-weight: 600; }
+  .classline .stamp {
+    margin-left: auto; border-right: none; border-left: 1px solid var(--rule-dark);
+    color: var(--stamp); font-weight: 600;
+  }
+
+  /* ── abstract / summary table ── */
+  .abstract {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    border: 1px solid var(--rule-dark); border-top: none;
+    background: #FFFFFF;
+  }
+  .abox {
+    padding: 14px 16px 12px;
+    border-right: 1px solid var(--rule);
+  }
+  .abox:last-child { border-right: none; }
+  .abox .n {
+    font-family: var(--mono); font-weight: 600;
+    font-size: 30px; line-height: 1; color: var(--ink);
+  }
+  .abox .l {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--faint); margin-top: 6px;
+  }
+
+  /* ── section headings ── */
+  h2.sec {
+    font-family: var(--mono); font-weight: 600;
+    font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    margin: 40px 0 0; padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule-dark);
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  }
+  h2.sec .secno { color: var(--faint); }
+
+  /* ── query parameters (filters) ── */
+  .query { background: #FFFFFF; border: 1px solid var(--rule-dark); border-top: none; padding: 14px 16px 10px; }
+  .fgroup { display: flex; align-items: baseline; gap: 12px; padding: 4px 0; }
+  .fgroup + .fgroup { border-top: 1px dotted var(--rule); }
   .fgroup .fl {
-    flex: 0 0 86px; text-align: right;
-    font-size: 10.5px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
-    color: rgba(255,255,255,.65);
+    flex: 0 0 96px; font-family: var(--mono); font-size: 10px;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--faint);
+    padding-top: 4px;
   }
-  .chips { display: flex; flex-wrap: wrap; gap: 7px; flex: 1; }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px 2px; flex: 1; }
   .chip {
-    cursor: pointer; user-select: none;
-    font: inherit; font-size: 12.5px; font-weight: 700; color: var(--white);
-    background: rgba(255,255,255,.10); border: 1.5px solid rgba(255,255,255,.35);
-    border-radius: 999px; padding: 5px 13px;
-    transition: background .15s ease, color .15s ease;
+    cursor: pointer; user-select: none; background: none; border: none;
+    font-family: var(--mono); font-size: 11.5px; color: var(--ink-2);
+    padding: 3px 7px;
   }
-  .chip:hover { background: rgba(255,255,255,.22); }
-  .chip.on { background: var(--white); color: var(--green-2); border-color: var(--white); }
-  .chip .ct { opacity: .55; font-weight: 600; margin-left: 4px; }
+  .chip::before { content: "[ "; color: var(--rule); }
+  .chip::after  { content: " ]"; color: var(--rule); }
+  .chip:hover { color: var(--accent); }
+  .chip:hover::before, .chip:hover::after { color: var(--accent); }
+  .chip.on { color: #FFFFFF; background: var(--accent); }
+  .chip.on::before { content: "[✓ "; color: #9BD3AE; }
+  .chip.on::after { content: " ]"; color: #9BD3AE; }
+  .chip .ct { color: var(--faint); margin-left: 5px; }
+  .chip.on .ct { color: #C6E8D0; }
 
   .resultline {
-    margin: 18px 0 14px; font-size: 13px; font-weight: 700;
-    letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.75);
-    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-2);
+    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    padding: 8px 2px;
   }
-  .clear { cursor: pointer; background: none; border: none; font: inherit; color: var(--mint); text-decoration: underline; display: none; }
+  .clear {
+    cursor: pointer; background: none; border: none; font: inherit;
+    color: var(--alert); text-decoration: underline; display: none;
+    text-transform: uppercase; letter-spacing: .08em;
+  }
   .clear.show { display: inline; }
 
-  /* gum grid */
-  .grid {
-    display: grid; gap: 14px;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    text-align: left;
+  /* ── the register (table) ── */
+  .tablewrap { overflow-x: auto; border: 1px solid var(--rule-dark); background: #FFFFFF; }
+  table.register { width: 100%; border-collapse: collapse; min-width: 880px; }
+  .register thead th {
+    font-family: var(--mono); font-weight: 600; font-size: 10px;
+    letter-spacing: .12em; text-transform: uppercase; text-align: left;
+    color: var(--ink); background: var(--paper-2);
+    border-bottom: 2px solid var(--rule-dark);
+    padding: 8px 10px; white-space: nowrap;
+    position: sticky; top: 0;
   }
-  .gum {
-    background: var(--white); border-radius: 18px; padding: 18px 19px 16px;
-    box-shadow: 0 16px 34px -20px rgba(0,0,0,.45);
-    color: var(--body); position: relative;
-    display: flex; flex-direction: column; gap: 9px;
+  .register tbody td {
+    padding: 7px 10px; border-bottom: 1px solid var(--rule);
+    font-size: 13px; vertical-align: top; white-space: nowrap;
   }
-  .gum .brand {
-    font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;
-    color: #2c8a4b;
+  .register tbody tr.specrow { cursor: pointer; }
+  .register tbody tr.specrow:hover { background: var(--hl); }
+  .register tbody tr.specrow.open { background: var(--hl); }
+  .register .specno { font-family: var(--mono); font-size: 11.5px; color: var(--ink-2); }
+  .register .brand { font-weight: 600; }
+  .register .variety { }
+  .register .mono { font-family: var(--mono); font-size: 11.5px; color: var(--ink-2); }
+  .register .est { font-family: var(--mono); font-size: 11.5px; color: var(--ink-2); text-align: right; }
+  .register .sugar-n { color: var(--alert); }
+  .register .stat {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase;
   }
-  .gum h3 {
-    font-family: "Fraunces", Georgia, serif; font-weight: 900;
-    font-size: 21px; line-height: 1.05; letter-spacing: -.01em; color: var(--ink);
-  }
-  .gum .flav { font-size: 13.5px; line-height: 1.45; color: var(--body); }
-  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: auto; }
-  .tag {
-    font-size: 10.5px; font-weight: 700; letter-spacing: .06em;
-    background: #EAF7EE; color: #2c8a4b; border-radius: 999px; padding: 3px 9px;
-  }
-  .tag.co { background: #FFF1E6; color: #A65A2E; }
-  .tag.yr { background: #F0EDFB; color: #5B4FA8; }
-  .tag.sugar { background: #FDE9EE; color: #C2335C; }
-  .dot {
-    position: absolute; top: 17px; right: 17px;
-    width: 10px; height: 10px; border-radius: 50%;
-    background: #D9D9D9; /* unchewed */
-  }
-  .gum.reviewed .dot { background: var(--bright); }
+  .register .stat::before { content: "□ "; }
+  .register tr.reviewed .stat { color: var(--accent-2); }
+  .register tr.reviewed .stat::before { content: "▣ "; }
 
-  /* big gum counter */
-  .biggum {
-    width: min(980px, 100%); margin: 56px auto 0; position: relative; z-index: 1;
-    background: #FAF6EC; border-radius: 14px; overflow: hidden;
-    border: 1px solid rgba(0,0,0,.12); text-align: left; color: #16261c;
-    box-shadow: 0 20px 44px -22px rgba(0,0,0,.5);
+  /* expanded spec sheet */
+  tr.detail td {
+    background: #FCFBF8; border-bottom: 1px solid var(--rule-dark);
+    padding: 14px 16px 16px; white-space: normal;
   }
-  .biggum .bg-head {
-    display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    background: #0C5328; color: #fff; padding: 11px 20px;
-    font-weight: 800; font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+  .spec {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px 28px; max-width: 920px;
   }
-  .biggum .bg-head .doc { color: #FFD23F; opacity: .9; letter-spacing: .16em; }
-  .biggum .bg-body { padding: 20px 24px 24px; }
-  .biggum h2 {
-    font-family: "Fraunces", Georgia, serif; font-weight: 900;
-    font-size: clamp(23px, 5vw, 32px); line-height: 1.05; letter-spacing: -.02em;
+  .spec dt {
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--faint);
   }
-  .biggum h2 em { font-style: italic; color: #147B3C; }
-  .biggum .blurb { font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 15px; color: #4A4636; margin-top: 8px; }
-  .cobars { margin-top: 18px; display: flex; flex-direction: column; gap: 9px; }
-  .corow { display: grid; grid-template-columns: minmax(140px, 220px) 1fr 42px; gap: 12px; align-items: center; font-size: 13.5px; }
-  .corow .nm { font-weight: 800; color: #16261c; cursor: pointer; }
-  .corow .nm:hover { color: #147B3C; text-decoration: underline; }
-  .corow .bar { height: 14px; border-radius: 999px; background: #ECE5D3; overflow: hidden; }
-  .corow .fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #147B3C, #46CF6B); }
-  .corow .n { font-weight: 800; text-align: right; color: #4A4636; }
+  .spec dd { font-size: 13px; margin: 1px 0 0; }
+  .spec .pair { border-top: 1px dotted var(--rule); padding-top: 6px; }
+  .flagged {
+    font-family: var(--mono); font-size: 10px; color: var(--alert);
+    border: 1px solid var(--alert); padding: 0 5px; margin-left: 6px;
+    letter-spacing: .06em; vertical-align: 1px;
+  }
+  .specnotes {
+    margin-top: 12px; padding-top: 8px; border-top: 1px dotted var(--rule);
+    font-size: 12.5px; color: var(--ink-2); font-style: italic; max-width: 76ch;
+  }
 
-  .footnote {
-    width: min(980px, 100%); margin: 26px auto 0; position: relative; z-index: 1;
-    font-size: 12.5px; line-height: 1.6; color: rgba(255,255,255,.65); text-align: center;
+  /* ── manufacturer concentration ── */
+  .conc { border: 1px solid var(--rule-dark); border-top: none; background: #FFFFFF; padding: 4px 16px 14px; }
+  .corow {
+    display: grid; grid-template-columns: minmax(170px, 250px) 1fr 80px;
+    gap: 14px; align-items: center; padding: 7px 0;
+    border-bottom: 1px dotted var(--rule); font-size: 13px;
   }
-  .footnote a { color: rgba(255,255,255,.85); }
+  .corow:last-child { border-bottom: none; }
+  .corow .nm { font-weight: 600; cursor: pointer; }
+  .corow .nm:hover { color: var(--accent); text-decoration: underline; }
+  .corow .nm .own { display: block; font-weight: 400; font-size: 11px; color: var(--faint); }
+  .corow .bar { height: 12px; background: var(--paper-2); border: 1px solid var(--rule); position: relative; }
+  .corow .fill { position: absolute; inset: 0 auto 0 0; background: var(--accent-2); }
+  .corow .n { font-family: var(--mono); font-size: 11.5px; text-align: right; color: var(--ink-2); }
 
-  .colophon {
-    position: relative; z-index: 1;
-    margin: 44px auto 30px; text-align: center;
-    font-size: 11px; letter-spacing: .05em; color: rgba(255,255,255,.5);
+  .concnote {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em;
+    color: var(--ink-2); padding: 10px 2px 0;
   }
-  .colophon a { color: inherit; text-decoration: none; }
-  .colophon a:hover { color: var(--white); text-decoration: underline; }
-  .colophon .sep { opacity: .5; margin: 0 8px; }
 
-  @media (max-width: 560px) {
-    .fgroup .fl { flex-basis: 100%; text-align: left; }
+  /* ── provenance / footer ── */
+  .provenance {
+    margin-top: 40px; border-top: 3px double var(--rule-dark); padding-top: 12px;
+    font-family: var(--mono); font-size: 11px; line-height: 1.8; color: var(--ink-2);
   }
-  @media (prefers-reduced-motion: reduce) {
-    *, ::before, ::after { animation: none !important; }
+  .provenance .row { display: flex; gap: 10px; }
+  .provenance .k { flex: 0 0 150px; text-transform: uppercase; letter-spacing: .1em; color: var(--faint); }
+
+  @media (max-width: 640px) {
+    .docmeta { text-align: left; }
+    .fgroup { flex-direction: column; gap: 2px; }
+    .fgroup .fl { flex-basis: auto; }
   }
 </style>
 </head>
 <body>
-  <div class="orb o1"></div>
-  <div class="orb o2"></div>
+  <div class="sheet">
 
-  <main>
-    <a class="crumb" href="/">← GUMDEMO</a>
-    <h1>the catalog</h1>
-    <p class="sub"><b>$350 of gum</b>, cataloged like a database. Because it is one.</p>
+    <header class="dochead">
+      <div>
+        <div class="org"><a href="/">GUMDEMO</a> · CONFECTIONERY SPECIMEN PROGRAM</div>
+        <h1>Specimen Registry</h1>
+      </div>
+      <div class="docmeta">
+        DOC <b>GD-182-REG</b><br />
+        REF <b>SHAREHOLDER VOTE 182</b><br />
+        REV <b id="rev">—</b> · <span id="docdate">—</span>
+      </div>
+    </header>
 
-    <div class="stats" id="stats"></div>
-
-    <div class="filters" id="filters"></div>
-
-    <div class="resultline">
-      <span id="count"></span>
-      <button class="clear" id="clear">clear filters</button>
+    <div class="classline">
+      <span>BUDGET <b>USD 350.00</b></span>
+      <span>LOCALE <b>LOS ANGELES, CA</b></span>
+      <span>ACQUISITION WINDOW <b>ONE (1) DAY</b></span>
+      <span class="stamp">⚠ PARTIAL INVENTORY — ACQUISITION PHASE</span>
     </div>
 
-    <div class="grid" id="grid"></div>
-  </main>
+    <div class="abstract" id="stats"></div>
 
-  <section class="biggum">
-    <div class="bg-head"><span>KmikeyM Research</span><span class="doc">Live Data · Catalog Rollup</span></div>
-    <div class="bg-body">
-      <h2>The shelf is an <em>oligopoly</em></h2>
-      <p class="blurb">All that variety, traced back to its parent companies. Click a name to filter the wall. (The Industry Briefs called it; the haul data confirms it.)</p>
-      <div class="cobars" id="cobars"></div>
+    <h2 class="sec"><span>1.0 — Query Parameters</span><span class="secno" id="count"></span></h2>
+    <div class="query">
+      <div id="filters"></div>
+      <div class="resultline">
+        <span>SELECT ROW FOR FULL SPECIMEN SHEET</span>
+        <button class="clear" id="clear">reset query</button>
+      </div>
     </div>
-  </section>
 
-  <p class="footnote" id="footnote"></p>
+    <h2 class="sec"><span>2.0 — Register of Specimens</span><span class="secno">SORT: ACQUISITION LIST ORDER</span></h2>
+    <div class="tablewrap">
+      <table class="register">
+        <thead>
+          <tr>
+            <th>Spec №</th><th>Brand</th><th>Variety</th><th>Mfr. of Record</th>
+            <th>Class</th><th>Flavor Fam.</th><th>Sweetener</th><th>Est.</th><th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
 
-  <footer class="colophon">
-    <a href="https://vote.kmikeym.com/k5m/questions/182" target="_blank" rel="noopener">born from vote 182</a>
-    <span class="sep">·</span>
-    <a href="data/gum.json">raw data (gum.json)</a>
-    <span class="sep">·</span>
-    <a href="https://kmikeym.com" target="_blank" rel="noopener">a KmikeyM project</a>
-  </footer>
+    <h2 class="sec"><span>3.0 — Manufacturer Concentration Analysis</span><span class="secno">UNITS PER PARENT ENTITY</span></h2>
+    <div class="conc">
+      <div id="cobars"></div>
+      <div class="concnote" id="concnote"></div>
+    </div>
+
+    <footer class="provenance">
+      <div class="row"><span class="k">SOURCE DATA</span><span><a href="data/gum.json">data/gum.json</a> (machine-readable, canonical)</span></div>
+      <div class="row"><span class="k">QA PROTOCOL</span><span>Fields pending verification are flagged <span class="flagged" style="margin-left:0">UNVERIFIED</span> on the specimen sheet. Null = not yet measured.</span></div>
+      <div class="row"><span class="k">PROVENANCE</span><span id="provnote">—</span></div>
+      <div class="row"><span class="k">AUTHORITY</span><span><a href="https://vote.kmikeym.com/k5m/questions/182" target="_blank" rel="noopener">Shareholder Vote 182</a> · <a href="https://kmikeym.com" target="_blank" rel="noopener">KmikeyM</a></span></div>
+    </footer>
+
+  </div>
 
 <script>
 (async function () {
@@ -253,89 +330,135 @@
   const companies = Object.fromEntries(db.companies.map(c => [c.id, c]));
   const gums = db.gums;
 
-  const FACETS = [
-    { key: 'region',        label: 'Region' },
-    { key: 'flavor_family', label: 'Flavor' },
-    { key: 'category',      label: 'Format' },
-    { key: 'company',       label: 'Company' },
-  ];
-  const active = {};            // key -> Set of values
-  FACETS.forEach(f => active[f.key] = new Set());
-
   const esc = s => String(s).replace(/[&<>"']/g, c =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const pretty = s => esc(String(s).replace(/-/g, ' '));
   const coName = id => esc(companies[id] ? companies[id].name : id);
+  const specNo = i => 'GD-' + String(i + 1).padStart(3, '0');
 
-  function matches(g) {
-    return FACETS.every(f => !active[f.key].size || active[f.key].has(g[f.key]));
+  const FACETS = [
+    { key: 'region',        label: 'Region' },
+    { key: 'flavor_family', label: 'Flavor fam.' },
+    { key: 'category',      label: 'Class' },
+    { key: 'company',       label: 'Manufacturer' },
+  ];
+  const active = {};
+  FACETS.forEach(f => active[f.key] = new Set());
+  const openRows = new Set();
+
+  const matches = g => FACETS.every(f => !active[f.key].size || active[f.key].has(g[f.key]));
+
+  // a field is flagged if any needs_verification entry mentions it
+  const isFlagged = (g, field) => (g.needs_verification || []).some(v => v.includes(field));
+  const FLAG = '<span class="flagged">UNVERIFIED</span>';
+
+  function specSheet(g, i) {
+    const co = companies[g.company] || {};
+    const pk = g.packaging || {};
+    const rows = [
+      ['Specimen №', specNo(i)],
+      ['Registry ID', '<span class="mono">' + esc(g.id) + '</span>'],
+      ['Region (Axis 1)', pretty(g.region)],
+      ['Class (Axis 2)', pretty(g.category) + (g.functional ? ' / functional: ' + esc(g.functional) : '')],
+      ['Flavor family (Axis 3)', pretty(g.flavor_family)],
+      ['Flavor, as labeled', esc(g.flavor)],
+      ['Sweetener system', g.sugar_free ? 'sugar-free' : 'sugared'],
+      ['Brand est.', (g.brand_intro_year || '—') + (isFlagged(g, 'intro_year') ? FLAG : '')],
+      ['Brand origin', esc(g.origin_country)],
+      ['Mfr. of record', coName(g.company)],
+      ['Ownership', esc(co.ownership || '—')],
+      ['Mfr. HQ', esc(co.hq || '—')],
+      ['Package (Axis 4)', esc(pk.type || '—') + ((g.needs_verification || []).some(v => v.includes('packaging') && !v.includes('pieces')) ? FLAG : '')],
+      ['Units per package', (pk.pieces != null ? pk.pieces : 'not yet measured') + (isFlagged(g, 'pieces') ? FLAG : '')],
+      ['Acquisition point', g.store ? esc(g.store) : 'pending receipt reconciliation'],
+      ['Unit price', g.price_usd != null ? '$' + g.price_usd.toFixed(2) : 'pending receipt reconciliation'],
+      ['Review status', esc(g.status)],
+      ['Episode', g.episode ? esc(g.episode) : '—'],
+      ['Reviewing panel', g.guest ? esc(g.guest) : '—'],
+    ];
+    const notes = [pk.design_notes, co.notes].filter(Boolean).map(esc).join(' · ');
+    return '<dl class="spec">' +
+      rows.map(([k, v]) => `<div class="pair"><dt>${k}</dt><dd>${v}</dd></div>`).join('') +
+      '</dl>' + (notes ? `<p class="specnotes">FIELD NOTES — ${notes}</p>` : '');
   }
 
   function render() {
-    const visible = gums.filter(matches);
+    const visible = gums.map((g, i) => [g, i]).filter(([g]) => matches(g));
 
-    // stats
+    // abstract
     const reviewed = gums.filter(g => g.status === 'reviewed').length;
     document.getElementById('stats').innerHTML = [
-      [gums.length, 'gums cataloged'],
+      [gums.length, 'specimens registered'],
       [new Set(gums.map(g => g.brand)).size, 'brands'],
-      [new Set(gums.map(g => g.company)).size, 'parent cos.'],
-      [reviewed, 'reviewed'],
-    ].map(([n, l]) => `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`).join('');
+      [new Set(gums.map(g => g.company)).size, 'parent entities'],
+      [reviewed + ' / ' + gums.length, 'reviewed'],
+    ].map(([n, l]) => `<div class="abox"><div class="n">${n}</div><div class="l">${l}</div></div>`).join('');
 
     // filters
     document.getElementById('filters').innerHTML = FACETS.map(f => {
       const counts = {};
       gums.forEach(g => { const v = g[f.key]; counts[v] = (counts[v] || 0) + 1; });
       const chips = Object.entries(counts).sort((a, b) => b[1] - a[1]).map(([v, n]) =>
-        `<button class="chip ${active[f.key].has(v) ? 'on' : ''}" data-facet="${f.key}" data-value="${esc(v)}">
-          ${f.key === 'company' ? coName(v) : pretty(v)}<span class="ct">${n}</span>
-        </button>`).join('');
+        `<button class="chip ${active[f.key].has(v) ? 'on' : ''}" data-facet="${f.key}" data-value="${esc(v)}">${f.key === 'company' ? coName(v) : pretty(v)}<span class="ct">${n}</span></button>`).join('');
       return `<div class="fgroup"><span class="fl">${f.label}</span><div class="chips">${chips}</div></div>`;
     }).join('');
 
-    // grid
-    document.getElementById('grid').innerHTML = visible.map(g => `
-      <article class="gum ${esc(g.status)}">
-        <span class="dot" title="${esc(g.status)}"></span>
-        <span class="brand">${esc(g.brand)}</span>
-        <h3>${esc(g.variety)}</h3>
-        <p class="flav">${esc(g.flavor)}${g.packaging && g.packaging.design_notes ? ' — ' + esc(g.packaging.design_notes) : ''}</p>
-        <div class="tags">
-          <span class="tag co">${coName(g.company)}</span>
-          ${g.brand_intro_year ? `<span class="tag yr">est. ${g.brand_intro_year}</span>` : ''}
-          <span class="tag">${pretty(g.category)}</span>
-          <span class="tag">${pretty(g.flavor_family)}</span>
-          <span class="tag sugar">${g.sugar_free ? 'sugar-free' : 'sugared'}</span>
-          ${g.functional ? `<span class="tag">${esc(g.functional)}</span>` : ''}
-        </div>
-      </article>`).join('');
+    // register rows
+    document.getElementById('rows').innerHTML = visible.map(([g, i]) => {
+      const open = openRows.has(g.id);
+      return `
+      <tr class="specrow ${esc(g.status)} ${open ? 'open' : ''}" data-id="${esc(g.id)}">
+        <td class="specno">${specNo(i)}</td>
+        <td class="brand">${esc(g.brand)}</td>
+        <td class="variety">${esc(g.variety)}</td>
+        <td class="mono">${coName(g.company)}</td>
+        <td class="mono">${pretty(g.category)}</td>
+        <td class="mono">${pretty(g.flavor_family)}</td>
+        <td class="mono ${g.sugar_free ? '' : 'sugar-n'}">${g.sugar_free ? 'sugar-free' : 'sugared'}</td>
+        <td class="est">${g.brand_intro_year || '—'}</td>
+        <td class="stat">${esc(g.status)}</td>
+      </tr>` + (open ? `<tr class="detail"><td colspan="9">${specSheet(g, i)}</td></tr>` : '');
+    }).join('');
 
-    // result line + clear
+    // count + clear
     const anyFilter = FACETS.some(f => active[f.key].size);
     document.getElementById('count').textContent =
-      anyFilter ? `${visible.length} of ${gums.length} gums` : `all ${gums.length} gums · updated ${db.meta.updated}`;
+      anyFilter ? `MATCHED ${visible.length} OF ${gums.length}` : `${gums.length} ROWS`;
     document.getElementById('clear').classList.toggle('show', anyFilter);
 
-    // company rollup
+    // concentration
     const coCounts = {};
     gums.forEach(g => coCounts[g.company] = (coCounts[g.company] || 0) + 1);
     const max = Math.max(...Object.values(coCounts));
     document.getElementById('cobars').innerHTML = Object.entries(coCounts)
       .sort((a, b) => b[1] - a[1])
-      .map(([id, n]) => `
+      .map(([id, n]) => {
+        const co = companies[id] || {};
+        const pct = ((n / gums.length) * 100).toFixed(1);
+        return `
         <div class="corow">
-          <span class="nm" data-facet="company" data-value="${esc(id)}">${coName(id)}</span>
+          <span class="nm" data-facet="company" data-value="${esc(id)}">${coName(id)}<span class="own">${esc(co.ownership || '')}</span></span>
           <div class="bar"><div class="fill" style="width:${(n / max) * 100}%"></div></div>
-          <span class="n">${n}</span>
-        </div>`).join('');
+          <span class="n">${n} · ${pct}%</span>
+        </div>`;
+      }).join('');
+    const top = Object.entries(coCounts).sort((a, b) => b[1] - a[1])[0];
+    document.getElementById('concnote').textContent =
+      `NOTE: ${(companies[top[0]] || {}).name || top[0]} accounts for ${((top[1] / gums.length) * 100).toFixed(1)}% of registered specimens. Apparent shelf variety is not corporate variety. See Industry Briefs № 001–003.`;
   }
 
   document.body.addEventListener('click', e => {
-    const t = e.target.closest('[data-facet]');
-    if (t) {
-      const { facet, value } = t.dataset;
+    const chip = e.target.closest('[data-facet]');
+    if (chip) {
+      const { facet, value } = chip.dataset;
       active[facet].has(value) ? active[facet].delete(value) : active[facet].add(value);
+      render();
+      return;
+    }
+    const row = e.target.closest('tr.specrow');
+    if (row) {
+      const id = row.dataset.id;
+      openRows.has(id) ? openRows.delete(id) : openRows.add(id);
       render();
       return;
     }
@@ -345,8 +468,10 @@
     }
   });
 
-  document.getElementById('footnote').innerHTML =
-    `${esc(db.meta.notes)} Facts we haven't double-checked yet are flagged in <a href="data/gum.json">the raw data</a> — this is a live document.`;
+  // doc meta
+  document.getElementById('rev').textContent = db.meta.schema_version;
+  document.getElementById('docdate').textContent = db.meta.updated;
+  document.getElementById('provnote').textContent = db.meta.source + ' ' + db.meta.notes;
 
   render();
 })();
